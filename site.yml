@@ -1,9 +1,8 @@
 ---
-- name: Installer Apache et PHP 8 sur AlmaLinux
+ - name: Installer Apache et PHP 8 sur AlmaLinux
    hosts: 192.168.0.44
    become: true
    tasks:
-
     - name: Installer les dépendances
       dnf:
         name:
