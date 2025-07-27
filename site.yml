@@ -10,7 +10,7 @@
 
     - name: custom index.html
       ansible.builtin.copy:
-        dest: /var/www/html/index.html
+        dest: /var/www/html/index.php
         content: <?php phpinfo( ); ?>
 
     - name: http service enable
