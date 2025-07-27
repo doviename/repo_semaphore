@@ -8,4 +8,8 @@
         name:
           - epel-release
           - dnf-utils
-        state: present	
+        state: present
+     - name: Install Remi repository
+       dnf:
+        name: https://rpms.remirepo.net/enterprise/remi-release-9.rpm
+        state: present	   
