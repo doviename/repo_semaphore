@@ -48,4 +48,8 @@
           - php-pecl-imagick
           - ImageMagick
         state: present
+    - name: Restart PHP-FPM
+      ansible.builtin.service:
+        name: php-fpm
+        state: restarted   
         
