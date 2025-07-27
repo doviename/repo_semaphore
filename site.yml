@@ -5,5 +5,5 @@
   tasks:
     - name: httpd installed
       ansible.builtin.yum:
-        name: httpd
-	state: latest
+      name: httpd
+      state: latest
