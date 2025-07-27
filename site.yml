@@ -3,6 +3,14 @@
    hosts: 192.168.0.44
    become: true
    tasks:
+    - name: Copy remi rpm
+     ansible.builtin.copy:
+       src: /home/eric/remi-release-9.rpm
+       dest: /root/remi-release-9.rpm
+       owner: root
+       group: root
+       mode: '0644'
+
     - name: httpd installed
       ansible.builtin.yum:
         name: httpd
