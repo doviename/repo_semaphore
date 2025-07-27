@@ -3,14 +3,6 @@
    hosts: 192.168.0.44
    become: true
    tasks:
-    - name: Copy remi rpm
-      ansible.builtin.copy:
-        src: /home/eric/remi-release-9.rpm
-        dest: /root/
-        owner: root
-        group: root
-        mode: '0644'
-
     - name: httpd installed
       ansible.builtin.yum:
         name: httpd
@@ -33,3 +25,8 @@
         state: enabled
         immediate: yes
         permanent: yes
+
+    - name: Enable Remi PHP 8.4 module
+      ansible.builtin.command: dnf module enable php:remi-8.4 -y
+      args:
+        warn: false
