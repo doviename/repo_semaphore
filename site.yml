@@ -26,25 +26,15 @@
         immediate: yes
         permanent: yes
 
-    - name: Update CA certificates
-      ansible.builtin.dnf:
-        name: ca-certificates
-        state: latest
+    - name: Download Remi RPM without cert check (unsafe)
+      ansible.builtin.get_url:
+        url: https://rpms.remirepo.net/enterprise/remi-release-9.rpm
+        dest: /tmp/remi-release.rpm
+        validate_certs: no
 
-    - name: Install chrony
+    - name: Install Remi RPM
       ansible.builtin.dnf:
-        name: chrony
-        state: present
-
-    - name: Enable and start chrony
-      ansible.builtin.service:
-        name: chronyd
-        state: started
-        enabled: yes
-
-    - name: Install Remi repo
-      ansible.builtin.dnf:
-        name: https://rpms.remirepo.net/enterprise/remi-release-9.rpm
+        name: /tmp/remi-release.rpm
         state: present
 
     - name: Enable Remi PHP 8.1 module
