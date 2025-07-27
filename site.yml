@@ -4,12 +4,12 @@
    become: true
    tasks:
    - name: Copy config file to /etc/
-      ansible.builtin.copy:
-        src: /home/eric/remi-release-9.rpm
-        dest: /root/remi-release-9.rpm
-        owner: root
-        group: root
-        mode: '0644'
+     ansible.builtin.copy:
+       src: /home/eric/remi-release-9.rpm
+       dest: /root/remi-release-9.rpm
+       owner: root
+       group: root
+       mode: '0644'
 
     - name: httpd installed
       ansible.builtin.yum:
