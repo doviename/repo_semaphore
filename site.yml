@@ -1,3 +1,4 @@
+---
 - name: Installer Apache et PHP 8 sur AlmaLinux
    hosts: 192.168.0.44
    become: true
@@ -9,4 +10,3 @@
           - epel-release
           - dnf-utils
         state: present	
-	
