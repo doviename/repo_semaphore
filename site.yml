@@ -28,6 +28,7 @@
 
     - name: Enable Remi PHP 8.4 module
       ansible.builtin.command: dnf module enable php:remi-8.4 -y
+        state: present
 
     - name: Install PHP 8.4 and common modules
       ansible.builtin.dnf:
