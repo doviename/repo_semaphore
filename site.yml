@@ -28,5 +28,5 @@
 
     - name: Enable Remi PHP 8.4 module
       ansible.builtin.command: dnf module enable php:remi-8.4 -y
-      args:
-        warn: false
+        args:
+          warn: false
