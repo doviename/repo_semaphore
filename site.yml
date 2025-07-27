@@ -1,7 +1,8 @@
-- hosts: my_server
+---
+- name: Deploy Docker containers with different colors
+  hosts: my_server
   become: true
-  
-tasks:
-  - name: Print OS info
-    ansible.builtin.package:
-      name: apache2
+  tasks:
+    - name: Print OS info
+      ansible.builtin.package:
+        name: apache2
