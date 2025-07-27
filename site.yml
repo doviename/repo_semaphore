@@ -4,6 +4,6 @@
   become: true
   tasks:
     - name: httpd installed
-      ansible.builtin.yum:
+      ansible.builtin.dnf:
       name: httpd
-      state: latest
+      state: present
