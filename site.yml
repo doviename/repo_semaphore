@@ -6,7 +6,7 @@
     - name: Copy remi rpm
       ansible.builtin.copy:
         src: /home/eric/remi-release-9.rpm
-        dest: /root/remi-release-9.rpm
+        dest: /root/
         owner: root
         group: root
         mode: '0644'
