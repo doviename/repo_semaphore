@@ -3,14 +3,17 @@
    hosts: 192.168.0.44
    become: true
    tasks:
+   - name: Copy config file to /etc/
+      ansible.builtin.copy:
+        src: /home/eric/remi-release-9.rpm
+        dest: /root/remi-release-9.rpm
+        owner: root
+        group: root
+        mode: '0644'
+
     - name: httpd installed
       ansible.builtin.yum:
         name: httpd
-        state: present
-
-    - name: repo remi
-      ansible.builtin.yum:
-        name: https://rpms.remirepo.net/enterprise/remi-release-9.rpm
         state: present
 
     - name: custom index.html
@@ -30,32 +33,3 @@
         state: enabled
         immediate: yes
         permanent: yes
-
-    - name: Enable Remi PHP 8.1 module
-      ansible.builtin.command: dnf module enable php:remi-8.1 -y
-      args:
-        warn: false
-
-    - name: Install PHP 8.1 and common modules
-      ansible.builtin.dnf:
-        name:
-          - php
-          - php-cli
-          - php-common
-          - php-fpm
-          - php-mysqlnd
-          - php-pdo
-          - php-opcache
-          - php-gd
-          - php-mbstring
-          - php-xml
-          - php-json
-          - php-devel
-        state: present
-
-    - name: Ensure PHP-FPM is enabled and started
-      ansible.builtin.service:
-        name: php-fpm
-        state: started
-        enabled: yes
-
