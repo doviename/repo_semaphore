@@ -26,11 +26,37 @@
         immediate: yes
         permanent: yes
 
-    - name: Download Remi RPM without cert check (unsafe)
+    - name: Ensure ca-certificates is up to date
+      ansible.builtin.dnf:
+        name: ca-certificates
+        state: latest
+
+    - name: Ensure chrony is installed
+      ansible.builtin.dnf:
+        name: chrony
+        state: present
+
+    - name: Ensure chronyd is running
+      ansible.builtin.service:
+        name: chronyd
+        state: started
+        enabled: yes
+
+    - name: Import Remi GPG key
+      ansible.builtin.rpm_key:
+        key: https://rpms.remirepo.net/RPM-GPG-KEY-remi
+        state: present
+
+    - name: Download Remi RPM (SSL verification disabled)
       ansible.builtin.get_url:
         url: https://rpms.remirepo.net/enterprise/remi-release-9.rpm
         dest: /tmp/remi-release.rpm
         validate_certs: no
+
+    - name: Install Remi RPM
+      ansible.builtin.dnf:
+        name: /tmp/remi-release.rpm
+        state: present
 
     - name: Install Remi RPM
       ansible.builtin.dnf:
@@ -64,3 +90,4 @@
         name: php-fpm
         state: started
         enabled: yes
+
