@@ -31,6 +31,17 @@
         name: ca-certificates
         state: latest
 
+    - name: Install chrony
+      ansible.builtin.dnf:
+        name: chrony
+        state: present
+
+    - name: Enable and start chrony
+      ansible.builtin.service:
+        name: chronyd
+        state: started
+        enabled: yes
+
     - name: Install Remi repo
       ansible.builtin.dnf:
         name: https://rpms.remirepo.net/enterprise/remi-release-9.rpm
@@ -63,4 +74,3 @@
         name: php-fpm
         state: started
         enabled: yes
-
