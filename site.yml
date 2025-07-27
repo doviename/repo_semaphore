@@ -25,3 +25,36 @@
         state: enabled
         immediate: yes
         permanent: yes
+
+    - name: Install Remi repo
+      ansible.builtin.dnf:
+        name: https://rpms.remirepo.net/enterprise/remi-release-9.rpm
+        state: present
+
+    - name: Enable Remi PHP 8.1 module
+      ansible.builtin.command: dnf module enable php:remi-8.1 -y
+      args:
+        warn: false
+
+    - name: Install PHP 8.1 and common modules
+      ansible.builtin.dnf:
+        name:
+          - php
+          - php-cli
+          - php-common
+          - php-fpm
+          - php-mysqlnd
+          - php-pdo
+          - php-opcache
+          - php-gd
+          - php-mbstring
+          - php-xml
+          - php-json
+          - php-devel
+        state: present
+
+    - name: Ensure PHP-FPM is enabled and started
+      ansible.builtin.service:
+        name: php-fpm
+        state: started
+        enabled: yes
