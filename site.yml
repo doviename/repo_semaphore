@@ -7,14 +7,3 @@
       ansible.builtin.yum:
         name: httpd
 	state: latest
-	
-    - name: custom index.html
-      ansible.builtin.copy:
-	dest: /var/www/html/index.html
-	content: Custom Web Page
-		
-    - name: http service enable
-      ansible.builtin.service:
-	name: httpd
-	enabled: true
-	state: started
