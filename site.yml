@@ -1,21 +1,20 @@
 ---
- - name: Installer Apache et PHP 8 sur AlmaLinux
+- name: Installer Apache et PHP 8 sur AlmaLinux
    hosts: 192.168.0.44
    become: true
    tasks:
     - name: httpd installed
-	     ansible.builtin.yum:
-	        name: httpd
-		       state: latest
+      ansible.builtin.yum:
+        name: httpd
+	state: latest
 	
-    - name:	custom index.html
-	     ansible.builtin.copy:
-	        dest: /var/www/html/index.html
-	        content:
-	           Custom Web Page
+    - name: custom index.html
+      ansible.builtin.copy:
+	dest: /var/www/html/index.html
+	content: Custom Web Page
 		
-	   - name: http service enable
-	     ansible.builtin.service:
-	        name: httpd
-		       enabled: true
-		       state: started
+    - name: http service enable
+      ansible.builtin.service:
+	name: httpd
+	enabled: true
+	state: started
