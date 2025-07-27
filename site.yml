@@ -49,7 +49,7 @@
 
     - name: Download Remi RPM (SSL verification disabled)
       ansible.builtin.get_url:
-        url: https://rpms.remirepo.net/enterprise/remi-release-9.rpm
+        url: http://rpms.remirepo.net/enterprise/remi-release-9.rpm
         dest: /tmp/remi-release.rpm
         validate_certs: no
 
