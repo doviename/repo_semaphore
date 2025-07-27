@@ -20,7 +20,7 @@
         state: started
 
     - name: open firewall
-      ansible.posix..firewalld:
+      ansible.posix.firewalld:
         service: httpd
         state: enabled
         immediate: true
