@@ -8,6 +8,7 @@
         name:
           - epel-release
           - dnf-utils
+	  - locate
         state: present
     - name: Install Remi repository
       dnf:
@@ -20,4 +21,4 @@
     - name: Install PHP 8.1 from Remi
       dnf:
         name: php
-        state: present
+        state: present	
