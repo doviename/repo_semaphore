@@ -11,11 +11,6 @@
           - dnf-utils
         state: present
 
-    - name: Activer le dépôt Remi
-      dnf:
-        name: https://rpms.remirepo.net/enterprise/remi-release-9.rpm
-        state: present
-
     - name: Activer le module PHP 8.2 (ou 8.1, 8.0)
       command: dnf module enable php:remi-8.2 -y
       args:
