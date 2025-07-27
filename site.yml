@@ -45,5 +45,7 @@
           - php-json
           - php-devel
           - php-pgsql
+          - php-pecl-imagick
+          - ImageMagick
         state: present
         
