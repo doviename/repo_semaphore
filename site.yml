@@ -44,5 +44,6 @@
           - php-xml
           - php-json
           - php-devel
+          - php-pgsql
         state: present
         
