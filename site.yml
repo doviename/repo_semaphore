@@ -13,7 +13,7 @@
 
     - name: Activer le dépôt Remi
       dnf:
-        name: https://rpms.remirepo.net/enterprise/remi-release-{{ ansible_facts['distribution_major_version'] }}.rpm
+        name: https://rpms.remirepo.net/enterprise/remi-release-9.rpm
         state: present
 
     - name: Activer le module PHP 8.2 (ou 8.1, 8.0)
