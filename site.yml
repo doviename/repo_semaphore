@@ -3,9 +3,19 @@
    hosts: 192.168.0.44
    become: true
    tasks:
-    - name: Installer les dépendances
-      dnf:
-        name:
-          - epel-release
-          - dnf-utils
-        state: present	
+    - name: httpd installed
+	     ansible.builtin.yum:
+	        name: httpd
+		       state: latest
+	
+    - name:	custom index.html
+	     ansible.builtin.copy:
+	        dest: /var/www/html/index.html
+	        content:
+	           Custom Web Page
+		
+	   - name: http service enable
+	     ansible.builtin.service:
+	        name: httpd
+		       enabled: true
+		       state: started
