@@ -17,3 +17,7 @@
       shell: dnf module enable php:remi-8.1 -y
       args:
         warn: false
+    - name: Install PHP 8.1 from Remi
+      dnf:
+        name: php
+        state: present
