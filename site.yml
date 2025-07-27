@@ -26,6 +26,11 @@
         immediate: yes
         permanent: yes
 
+    - name: Update CA certificates
+      ansible.builtin.dnf:
+        name: ca-certificates
+        state: latest
+
     - name: Install Remi repo
       ansible.builtin.dnf:
         name: https://rpms.remirepo.net/enterprise/remi-release-9.rpm
@@ -58,3 +63,4 @@
         name: php-fpm
         state: started
         enabled: yes
+
