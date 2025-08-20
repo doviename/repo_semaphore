@@ -3,7 +3,7 @@
    hosts: 192.168.0.44
    become: true
    vars:
-    app_user: "www-data"
+    app_user: "apache"
     http_host: "nomdedomaine.com"
     http_conf: "nomdedomaine.com.conf"
     http_port: "80"
