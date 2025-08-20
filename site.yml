@@ -42,7 +42,12 @@
     - name: custom index.html
       ansible.builtin.copy:
         dest: "/var/www/{{ http_host }}/index.html"
-        content: Custom Web Page          
+        content: Custom Web Page
+        
+    - name: set up Apache virtualhost
+      ansible.builtin.template:
+        src: "templates/apache.conf.j2"
+        dest: "/etc/apache2/sites-available/{{ http_conf }}"
 
     - name: Enable Remi PHP 8.4 module
       ansible.builtin.command: dnf module enable php:remi-8.4 -y
