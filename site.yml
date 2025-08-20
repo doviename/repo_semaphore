@@ -32,6 +32,13 @@
         immediate: yes
         permanent: yes
 
+    - name: document root exist
+      ansible.builtin.file:
+        path: "/var/www/{{ http_host }}"
+        state: directory
+        owner: "{{ app_user }}"
+        mode: '0755'
+
     - name: Enable Remi PHP 8.4 module
       ansible.builtin.command: dnf module enable php:remi-8.4 -y
 
