@@ -2,6 +2,12 @@
  - name: Installer Apache et PHP 8 sur AlmaLinux
    hosts: 192.168.0.44
    become: true
+   vars:
+    app_user: "www-data"
+    http_host: "nomdedomaine.com"
+    http_conf: "nomdedomaine.com.conf"
+    http_port: "80"
+    disable_default: true
    tasks:
     - name: httpd installed
       ansible.builtin.yum:
@@ -10,8 +16,8 @@
 
     - name: custom index.html
       ansible.builtin.copy:
-        dest: /var/www/html/index.php
-        content: <?php phpinfo();  ?>
+        dest: /var/www/html/index.html
+        content: Custom Web Page
 
     - name: http service enable
       ansible.builtin.service:
@@ -45,12 +51,4 @@
           - php-json
           - php-devel
           - php-pgsql
-          - php-pecl-imagick
-          - ImageMagick
         state: present
-    - name: Restart PHP-FPM
-      ansible.builtin.service:
-        name: php-fpm
-        state: restarted
-        
-        
