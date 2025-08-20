@@ -38,6 +38,11 @@
         state: directory
         owner: "{{ app_user }}"
         mode: '0755'
+     - name: custom index.html
+       ansible.builtin.copy:
+         dest: "/var/www/{{ http_host }}/index.html"
+         content: |
+          Custom Web Page          
 
     - name: Enable Remi PHP 8.4 module
       ansible.builtin.command: dnf module enable php:remi-8.4 -y
